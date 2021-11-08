@@ -1086,6 +1086,15 @@ header {
 					}
 				}
 			}
+
+			& + h3,
+			& + .h3 {
+				margin-top: 30px;
+
+				@media (min-width: $adaptive-width-desktop) {
+					margin-top: 35px;
+				}
+			}
 		}
 	}
 
