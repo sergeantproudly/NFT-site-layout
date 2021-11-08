@@ -5,112 +5,6 @@ function initElements(element) {
 		onResize();
 	});
 
-	$.widget('app.selectmenu', $.ui.selectmenu, {
-		_drawButton: function() {
-		    this._super();
-		    var selected = this.element
-		    .find('[selected]')
-		    .length,
-		        placeholder = this.options.placeholder;
-
-		    if (!selected && placeholder) {
-		      	this.buttonItem.text(placeholder).addClass('placeholder');
-		    } else {
-		    	this.buttonItem.removeClass('placeholder');
-		    }
-		}
-	});
-
-	$.datepicker.regional['ru']={
-           closeText: 'Закрыть',
-           prevText: '&#x3c;Пред',
-           nextText: 'След&#x3e;',
-           currentText: 'Сегодня',
-           monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-           monthNamesShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-           dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
-           dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
-           dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-           weekHeader: 'Нед',
-           dateFormat: 'dd.mm.yy',
-           firstDay: 1,
-           isRTL: false,
-           showMonthAfterYear: false,
-           yearSuffix: ''
-    };
-    $.datepicker.setDefaults($.datepicker.regional['ru']);
-
-	$element.find('select').each(function(i, select) {
-		// editable select
-		if (typeof($(select).attr('editable')) != 'undefined' && $(select).attr('editable') !== 'false') {
-			$(select).editableSelect({ 
-				effects: 'fade',
-				source: $(select).attr('source') ? $(select).attr('source') : false
-			});
-
-		// simple select
-		} else {
-			if ($(select).offset().left + 370 > $(window).width()) {
-				$(select).attr('data-pos', 'right');
-			}
-
-			var offset = $(select).attr('data-offset');
-			if ($(select).attr('data-pos') == 'right') {
-				var data = {
-					position: {my : "right"+(offset?"+"+offset:"")+" top-2", at: "right bottom"}
-				}
-			} else {
-				var data = {
-					position: {my : "left"+(offset?"+"+offset:"")+" top-2"}
-				}
-			}
-			if (typeof($(select).attr('placeholder')) != 'undefined') {
-				data['placeholder'] = $(select).attr('placeholder');
-			}
-			data['change'] = function(e, ui) {
-				$(ui.item.element).closest('.input').addClass('focused');
-			}
-			data['appendTo'] = $(select).parent();
-			$(select).selectmenu(data);
-			if (typeof($(select).attr('placeholder')) != 'undefined') {
-				$(select).prepend('<option value="" disabled selected>' + data['placeholder'] + '</option>');
-			}
-		}
-	});
-
-	$element.find('.js-date').each(function(index,input){
-		var datepicker_options = {
-			inline: true,
-			language: 'ru',
-		    changeYear: true,
-		    changeMonth: true,
-		    showOtherMonths: true
-		};
-		var minYear=$(input).attr('data-min-year');
-		if(minYear) datepicker_options.minDate='01.01.'+minYear;
-		else minYear='c-10';
-		var maxYear=$(input).attr('data-max-year');
-		if(maxYear) datepicker_options.maxDate='01.01.'+maxYear;
-		else maxYear='c+10';
-		var defaultDate=$(input).attr('data-default-date');
-		if(defaultDate) datepicker_options.defaultDate=defaultDate;
-		datepicker_options.yearRange=[minYear,maxYear].join(':');
-		
-		$(input).attr('type','text').datepicker(datepicker_options).addClass('date').val($(input).attr('value')).after('<i></i>');
-		$(input).next('i').click(function() {
-			$(this).prev('input').datepicker('show');
-			//initElements($('#ui-datepicker-div'));
-		});
-	});
-
-	$element.find('input[type="checkbox"], input[type="radio"]').checkboxradio();
-
-	$element.find('.file-upload').each(function(index, block) {
-		$(block).find('.label').click(function(e){
-			e.preventDefault();
-		});
-	});
-
 	$element.find('.modal-close, .close-btn, .modal .js-cancel').click(function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -126,37 +20,10 @@ function initElements(element) {
 		hideModal(this, false);
 	});
 
-	$element.find('.tabs, .js-tabs').lightTabs();
-
-	$element.find('.js-scroll').each(function(index, block) {
-		if (!$(block).attr('data-on-demand')) {
-			scrollInit(block);
-		}
-	});
-
 	$('body').mouseup(function(e) {
-		/*
 		if ($('#modal-fadeout').css('display') == 'block' && !$('html').hasClass('html-mobile-opened')) {
 			if (!$(e.target).closest('.contents').length && !$(e.target).closest('.ui-selectmenu-menu').length && !$(e.target).closest('.ui-datepicker').length) {
 				hideModal();
-			}
-		}
-		*/
-		if ($('html').hasClass('html-mobile-opened')) {
-			if (!$(e.target).closest('#mn-holder').length) {
-				$('#mn-holder .close').click();
-			}
-		}
-		if ($('#chat-fadeout').css('display') == 'block') {
-			if (!$(e.target).closest('#chat-mn').length) {
-				$('#chat-fadeout').stop().fadeOut(450);
-				$('#chat-mn').stop().fadeOut(300);
-				if (__isMobile) $('#attachments-mn').stop().fadeOut(300);
-			}
-		}
-		if ($('.select.opened').length) {
-			if (!$(e.target).closest('.select').length) {
-				$('.select.opened').find('.input-holder').click();
 			}
 		}
 
@@ -169,29 +36,6 @@ function initElements(element) {
 				hideModal();
 			} 
 		}
-		if ($('html').hasClass('html-mobile-opened')) {
-			if (key == 27) {
-				$('header>.close').click();
-			}
-		}
-		if ($('#chat-fadeout').css('display') == 'block') {			
-			if (key == 27) {
-				$('#chat-fadeout').stop().fadeOut(450);
-				$('#chat-mn').stop().fadeOut(300);
-				$('#attachments-mn').stop().fadeOut(300);
-			} 
-		}
-		if ($('#profile-sidebar').css('display') == 'block') {			
-			if (key == 27) {
-				$('#profile-sidebar .close').click();
-			} 
-		}
-	});
-
-	$element.find('.input input').on('input focusout', function() {
-		$(this).parent('.input').toggleClass('focused', $(this).val() != '');
-	}).each(function(i, item) {
-		$(item).parent('.input').toggleClass('focused', $(item).val() != '');
 	});
 
 	$element.find('textarea.js-autoheight').each(function(i, textarea) {
@@ -204,26 +48,6 @@ function initElements(element) {
 			if ($(textarea).css('display') != 'none') $(textarea).trigger('input');
 			$(textarea).data('autoheight-inited', true);
 		}
-	});
-
-	$element.find('input[type="number"][data-content="only-digits"]').on('keydown', function(e) {
-		if ($(this).val().length > 0) return false;
-
-		var key;
-        var keychar;
-        if (window.event) 
-        	key = window.event.keyCode;
-        else if 
-        	(e) key = e.which;
-        else 
-        	return true;
-        keychar = String.fromCharCode(key);
-        if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) )
-            return true;
-        else if ((("0123456789").indexOf(keychar) > -1))
-            return true;
-        else
-            return false;
 	});
 
 	fadeoutInit();
@@ -360,108 +184,6 @@ function scrollInit(block) {
 		}
 		$(block).data('inited', true);
 	}
-}
-
-function fadeoutInit(node) {
-	var $node = $(typeof(node) == 'undefined' ? 'body' : node);
-	$node.find('.js-fadeout').each(function(i, block) {
-		if (!$(block).data('inited')) {
-			var $holder = $('<div class="fadeout-holder"></div>').insertAfter($(block));
-			$holder.html($(block));
-			$(block).data('inited', true);
-		}
-
-		if (typeof($(block).attr('data-nowrap')) != 'undefined' && $(block).attr('data-nowrap') != false && $(block).attr('data-nowrap') != 'false') {
-			$(block).addClass('nowrap');
-		}
-		$(block).scrollLeft(0);
-		var w_child = 0;
-		var range = document.createRange();
-
-		$.each(block.childNodes, function(i, node) {
-			if (node.nodeType != 3) {
-				w_child += $(node).outerWidth(true);
-			} else {
-				if (typeof(range) != 'undefined') {
-					range.selectNodeContents(node);
-					var size = range.getClientRects();
-					if (typeof(size) != 'undefined' && typeof(size[0]) != 'undefined' && typeof(size[0]['width'] != 'undefined')) w_child += size[0]['width'];
-				}
-			}
-		});
-
-		var maxWidth = $(block).attr('data-max-width');
-		var cloneWidth = $(block).attr('data-clone-width');
-		var mobileOnly = $(block).attr('data-mobile-only');
-
-		if (!mobileOnly || (mobileOnly && ($(window).width() <= maxWidth))) {
-			if (cloneWidth) {
-				$(block).width($(cloneWidth).width());
-			}
-			var holderWidth = $(block).width();
-			if (w_child > holderWidth && (!maxWidth || $(window).width() <= maxWidth)) {
-				$(block).addClass('fadeout').removeClass('nowrap').swipe({
-					swipeStatus: function(event, phase, direction, distance) {
-						var offset = distance;
-
-						if (phase === $.fn.swipe.phases.PHASE_START) {
-							var origPos = $(this).scrollLeft();
-							$(this).data('origPos', origPos);
-
-						} else if (phase === $.fn.swipe.phases.PHASE_MOVE) {
-							var origPos = $(this).data('origPos');
-
-							if (direction == 'left') {
-								var scroll_max = $(this).prop('scrollWidth') - $(this).width();
-								var scroll_value_new = origPos - 0 + offset;
-								$(this).scrollLeft(scroll_value_new);
-								if (scroll_value_new >= scroll_max) $(this).addClass('scrolled-full');
-								else $(this).removeClass('scrolled-full');
-
-							} else if (direction == 'right') {
-								var scroll_value_new = origPos - offset;
-								$(this).scrollLeft(scroll_value_new);
-								$(this).removeClass('scrolled-full');
-							}
-
-						} else if (phase === $.fn.swipe.phases.PHASE_CANCEL) {
-							var origPos = $(this).data('origPos');
-							$(this).scrollLeft(origPos);
-
-						} else if (phase === $.fn.swipe.phases.PHASE_END) {
-							$(this).data('origPos', $(this).scrollLeft());
-						}
-					},
-					threshold: 70,
-					preventDefaultEvents: false
-				});
-			} else {
-				$(block).removeClass('fadeout');
-			}
-		}
-	});
-}
-
-function editableSelectReinit(select) {
-	if (typeof(select) == 'string') var $select = $('#' + select);
-	else $select = $(select);
-
-	var id = $select.attr('id');
-	$('#' + id + '_es').remove();
-	$select.data('editable-select', false);
-	$select.editableSelect({ 
-		effects: 'fade',
-		source: $select.attr('source') ? $select.attr('source') : false
-	}).on('change.editable-select', function(e) {
-		var $holder = $(e.target).closest('.input');
-		if ($holder.find('.es-input').val()) {
-			$(e.target).closest('.input').addClass('focused');
-		} else {
-			$(e.target).closest('.input').removeClass('focused');
-		}
-	});
-	$('#' + id + '_input').show();
-	return true;
 }
 
 function getOffsetSum(elem) {

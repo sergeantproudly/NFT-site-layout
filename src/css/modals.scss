@@ -1,0 +1,112 @@
+#modal-fadeout {
+	display: none;
+	background-color: #000;
+	opacity: 0.5;
+	z-index: 99;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@include transition(opacity);
+}
+
+.modal-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
+	z-index: 110;
+	display: none;
+	min-height: 100%;
+
+	@media (min-width: $adaptive-width-desktop) {
+		min-height: 0;
+	}
+
+	& > .modal {
+		overflow: hidden;
+		line-height: 0;
+		display: table;
+		background-color: #fff;
+		height: 100%;
+		width: 100%;
+
+		@media (min-width: $adaptive-width-desktop) {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+}
+
+.modal {
+	& > .contents {
+		padding: 34px 17px 31px;
+		position: relative;
+		@include radius(10px);
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+		background: none;
+		font-size: 11px;
+		line-height: 1.55;
+
+		@media (min-width: $adaptive-width-tablet) {
+			font-size: 12px;
+			line-height: 1.33;
+			padding: 37px 41px 31px;
+		}
+
+		@media (min-width: $adaptive-width-desktop) {
+			background-color: #fff;
+			width: 1069px;
+			margin: 5% auto;
+			height: auto;
+			display: block;
+			@include radius(20px);
+			padding: 66px 102px 40px;
+		}
+
+		.modal-close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			box-sizing: content-box;
+			cursor: pointer;
+			background: url('../images/ico_close_modal.svg') no-repeat center;
+			background-size: contain;
+			width: 12px;
+			height: 12px;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+			@media (min-width: $adaptive-width-tablet) {
+
+			}
+
+			@media (max-width: $adaptive-width-desktop) {
+				top: 0;
+				right: -149px;
+				width: 19px;
+				height: 19px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: -30px;
+					left: -30px;
+					width: 60px; 
+					height: 60px;
+					background-color: #fff;
+					@include radius(60px);
+					box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+				}
+			}
+		}
+
+		#modal-login > & {
+
+		}
+	}
+}

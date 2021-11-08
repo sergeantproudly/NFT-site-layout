@@ -28,4 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
+	// ССЫЛКИ НА МОДАЛЫ
+	$('.js-modal-link').click(function(e) {
+		e.preventDefault();
+		showModal($(this).attr('href') ? $(this).attr('href').substring(1) : $(this).attr('data-target').substring(1));
+	});
+
 });
