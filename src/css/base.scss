@@ -1,0 +1,266 @@
+html {
+	min-width: 320px;
+}
+html.html-modal-long {
+	height: auto !important;
+}
+html.html-modal {
+	height: 100% !important;
+	width: 100%;
+	overflow: hidden;
+}
+body {
+	font-family: $font-first;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.58;
+	color: #fff;
+	text-align: left;
+	width: 100%;
+	height: 100%;
+}
+a {
+	color: #000;
+	text-decoration: underline;
+	-webkit-tap-highlight-color: transparent;
+}
+h1,
+.h1{
+	font-family: $font-second;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.44;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	cursor: default;
+}
+h2,
+.h2{
+	font-family: $font-second;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 1.64;
+	text-transform: uppercase;
+	margin-bottom: 46px;
+	cursor: default;
+}
+h3,
+.h3{
+	font-family: $font-third;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.14;
+	margin-bottom: 15px;
+	cursor: default;
+}
+h4,
+.h4{
+	font-family: $font-third;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.14;
+	margin-bottom: 15px;
+	cursor: default;
+}
+h5,
+.h5{
+	font-family: $font-third;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.14;
+	margin-bottom: 15px;
+	cursor: default;
+}
+h6,
+.h6{
+	font-family: $font-third;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.14;
+	margin-bottom: 15px;
+	cursor: default;
+}
+p{
+	margin-bottom: 25px;
+}
+ol, ul{
+	list-style: none;
+}
+input[type='text'],
+input[type='date'],
+input[type='tel'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='search'] {
+	font-family: $font-first;
+	font-size: 14px;
+	line-height: 1;
+	padding: 15px;
+	box-sizing: border-box;
+	border: 0;
+	background-color: #fff;
+	color: #000;
+	@include transition(all, 450ms);
+
+	&::-webkit-input-placeholder { color: #828282; }
+	&::-moz-placeholder { color: #828282; }
+	&:-moz-placeholder { color: #828282; }
+	&:-ms-input-placeholder { color: #828282; }
+
+	&:hover {
+		@include transition(all, 450ms);
+	}
+
+	&:focus {
+        @include transition(all, 450ms);
+    }
+
+	&.attempted:invalid,
+	&.invalid,
+	&.err {
+		@include transition(all, 450ms);
+	}
+}
+
+textarea {
+	font-family: $font-first;
+	font-size: 14px;
+	line-height: 1.14;
+	padding: 21px 15px 26px;
+	box-sizing: border-box;
+	border: 0;
+	color: #000;
+	background-color: #fff;
+	overflow: auto;
+	@include transition(all, 450ms);
+
+	@media (min-width: $adaptive-width-tablet) {
+		font-size: 12px;
+		padding: 14px 16px 15px;
+	}
+
+	@media (min-width: $adaptive-width-desktop) {
+		font-size: 16px;
+		padding: 24px 31px 32px;
+	}
+
+	&::-webkit-input-placeholder { color: #828282; }
+	&::-moz-placeholder { color: #828282; }
+	&:-moz-placeholder { color: #828282; }
+	&:-ms-input-placeholder { color: #828282; }
+
+	&:hover {
+		@include transition(all, 450ms);
+	}
+
+	&:focus {
+        @include transition(all, 450ms);
+    }
+
+	&.attempted:invalid,
+	&.invalid,
+	&.err {
+		@include transition(all, 450ms);
+	}
+
+	&.js-autoheight {
+		resize: none;
+		overflow: hidden;
+	}
+}
+
+table{
+	border-collapse: collapse;
+	border: 0;
+}
+th{
+	text-align: left;
+	font-weight: 400;
+	border: 0; 
+}
+td{
+	text-align: left;
+	border: 0;
+}
+.holder {
+	max-width: $adaptive-width-desktop-wide;
+	margin: 0 auto;
+	padding: 0 $padding-edges-mobile;
+	box-sizing: border-box;
+
+	@media (min-width: $adaptive-width-tablet) {
+		padding: 0 $padding-edges-tablet;
+	}
+
+	@media (min-width: $adaptive-width-desktop) {
+		padding: 0 $padding-edges-desktop;
+	}
+}
+%pos-edges-left {
+	left: $padding-edges-mobile;
+
+	@media (min-width: $adaptive-width-tablet) {
+		left: $padding-edges-tablet;
+	}
+
+	@media (min-width: $adaptive-width-desktop) {
+		left: $padding-edges-desktop;
+	}
+}
+%pos-edges-right {
+	right: $padding-edges-mobile;
+
+	@media (min-width: $adaptive-width-tablet) {
+		right: $padding-edges-tablet;
+	}
+
+	@media (min-width: $adaptive-width-desktop) {
+		right: $padding-edges-desktop;
+	}
+}
+%padding-edges {
+	padding-left: $padding-edges-mobile;
+	padding-right: $padding-edges-mobile;
+
+	@media (min-width: $adaptive-width-tablet) {
+		padding-left: $padding-edges-tablet;
+		padding-right: $padding-edges-tablet;
+	}
+
+	@media (min-width: $adaptive-width-desktop) {
+		padding-left: $padding-edges-desktop;
+		padding-right: $padding-edges-desktop;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.btn {
+	font-family: $font-third;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+	@include radius(100px);
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+	padding: 12px 20px 13px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+
+	@media (min-width: $adaptive-width-desktop) {
+		font-size: 18px;
+		padding: 23px 40px 24px;
+	}
+}
+.dfn {
+	background-color: #000;
+	color: #fff;
+	padding: 3px 6px;
+	@include radius(20px);
+	cursor: default;
+}
