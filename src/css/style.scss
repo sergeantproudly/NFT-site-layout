@@ -160,13 +160,16 @@ header {
 		text-transform: uppercase;
 		color: #fff;
 		letter-spacing: 0.48px;
+		padding: 0 $padding-edges-mobile;
 
 		@media (min-width: $adaptive-width-tablet) {
 			font-size: 35px;
+			padding: 0 $padding-edges-tablet;
 		}
 
 		@media (min-width: $adaptive-width-desktop) {
 			font-size: 66px;
+			padding: 0 $padding-edges-desktop;
 		}
 
 		@media (min-width: $adaptive-width-desktop-wide) {
