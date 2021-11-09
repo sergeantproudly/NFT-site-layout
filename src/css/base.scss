@@ -262,9 +262,9 @@ td{
 	color: #fff;
 	padding: 3px 6px;
 	@include radius(20px);
-	// cursor: default;
 	cursor: pointer;
 	position: relative;
+	-webkit-tap-highlight-color: transparent;
 
 	& + .comment {
 		display: none;
