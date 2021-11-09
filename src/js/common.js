@@ -86,6 +86,14 @@ function parseUrl(url) {
 	return parser;
 } 
 
+function fixSelfHeight(element) {
+	var h = $(element).height();
+	$(element).height(h);
+}
+function unfixSelfHeight(element) {
+	$(element).height('auto');
+}
+
 function showModal(modal_id, dontHideOthers) {
 	var $modal = $('#' + modal_id);
 
@@ -95,6 +103,9 @@ function showModal(modal_id, dontHideOthers) {
 
 	//var display = __isMobileSmall ? 'block' : 'table';
 	var display = 'table';
+
+	// header bug fix
+	fixSelfHeight($('header'));
 
 	$('#modal-fadeout').stop().fadeIn(300);
 	$modal.stop().fadeIn(450).css({
@@ -134,6 +145,9 @@ function hideModal(sender, onlyModal) {
 		$modal.stop().fadeOut(450, function() {
 			$('html').removeClass('html-modal html-modal-long');
 		});
+
+		// header bug fix
+		unfixSelfHeight($('header'));
 	} else {
 		$modal.stop().fadeOut(450);
 	}
