@@ -118,12 +118,12 @@ function showModal(modal_id, dontHideOthers) {
 	if ($modal.attr('data-long') || oversize) {
 		$('html').addClass('html-modal-long');
 
-		if (oversize && __isMobile) {
-			var modalHeight = $modal.outerHeight() - parseInt($('#layout').css('padding-top'));
-			$('#layout').data('scrollTop', $(window).scrollTop()).addClass('js-modal-overflow').height(modalHeight);
-			$modal.css('top', 0);
-			$('html,body').scrollTop(0);
-		}
+		// if (oversize && __isMobile) {
+		// 	var modalHeight = $modal.outerHeight() - parseInt($('#layout').css('padding-top'));
+		// 	$('#layout').data('scrollTop', $(window).scrollTop()).addClass('js-modal-overflow').height(modalHeight);
+		// 	$modal.css('top', 0);
+		// 	$('html,body').scrollTop(0);
+		// }
 	} else {
 		$('html').addClass('html-modal');
 	}
@@ -137,17 +137,17 @@ function hideModal(sender, onlyModal) {
 	var $modal = sender ? $(sender).closest('.modal-wrapper') : $('.modal-wrapper:visible');
 	if (typeof(onlyModal) == 'undefined' || !onlyModal) {
 		$('#modal-fadeout').stop().fadeOut(300);
-		if ($('#layout').data('scrollTop')) {
-			var savedScrollTop =$('#layout').data('scrollTop');
-			$('#layout').removeClass('js-modal-overflow').height('auto').removeData('scrollTop');
-			$('html,body').scrollTop(savedScrollTop);
-		}
+		// if ($('#layout').data('scrollTop')) {
+		// 	var savedScrollTop =$('#layout').data('scrollTop');
+		// 	$('#layout').removeClass('js-modal-overflow').height('auto').removeData('scrollTop');
+		// 	$('html,body').scrollTop(savedScrollTop);
+		// }
 		$modal.stop().fadeOut(450, function() {
 			$('html').removeClass('html-modal html-modal-long');
-		});
 
-		// header bug fix
-		unfixSelfHeight($('header'));
+			// header bug fix
+			unfixSelfHeight($('header'));
+		});
 	} else {
 		$modal.stop().fadeOut(450);
 	}
