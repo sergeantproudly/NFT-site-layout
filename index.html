@@ -265,7 +265,7 @@
 				<h2>Будем рады вашему отзыву о&nbsp;выставке</h2>
 
 				<div class="form">
-					<form action="#" method="post">
+					<form action="#" method="post" id="feedback-form">
 						<textarea name="text" placeholder="Напишите отзыв здесь"></textarea>
 						<input type="submit" name="_submit" value="Отправить" class="btn">					
 					</form>
@@ -458,10 +458,10 @@
 
 				<h2>Соц. сети</h2>
 				<ul>
-					<li><a href="#" target="_blank">Эрмитаж в&nbsp;Инстаграм</a></li>
-					<li><a href="#" target="_blank">Эрмитаж в&nbsp;VK</a></li>
-					<li><a href="#" target="_blank">Эрмитаж в&nbsp;Facebook</a></li>
-					<li><a href="#" target="_blank">Отдел Современного искусства в&nbsp;Инстаграм</a></li>
+					<li><a href="https://www.instagram.com/hermitage_museum/" target="_blank">Эрмитаж в&nbsp;Инстаграм</a></li>
+					<li><a href="https://vk.com/hermitage_museum" target="_blank">Эрмитаж в&nbsp;VK</a></li>
+					<li><a href="https://www.facebook.com/state.hermitage/" target="_blank">Эрмитаж в&nbsp;Facebook</a></li>
+					<li><a href="https://www.instagram.com/hermitage20_21/" target="_blank">Отдел Современного искусства в&nbsp;Инстаграм</a></li>
 				</ul>
 				<div class="final"><a href="https://hermitagemuseum.org" target="_blank">hermitagemuseum.org</a></div>
 			</div>
@@ -482,12 +482,42 @@
 
 	<div id="modal-fadeout"></div>
 
-	<div class="modal-wrapper" id="modal-work1">
+	<div class="modal-wrapper" id="modal-done">
 		<div class="modal">
 			<div class="contents">
 				<div class="modal-close" role="button" title="Закрыть"></div>
 
-				Test
+				<div class="thanks">Спасибо за ваш отзыв!</div>
+				<button class="btn close-btn">Продолжить</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-wrapper modal-work" id="modal-work1">
+		<div class="modal">
+			<div class="contents">
+				<div class="modal-close" role="button" title="Закрыть"></div>
+
+				<div class="title">Органический рост: Кристальный риф</div>
+				<div class="authors">Майкл Джу и Данил Криворучко 2014</div>
+				<div class="media">
+					<a href="/assets/images/_work1_full.jpg" class="js-lightbox picture"><img src="assets/images/_work1_preview.jpg" alt="Органический рост: Кристальный риф"></a>
+					<a href="#" class="video"><img src="assets/images/_work1_video.jpg" alt="Органический рост: Кристальный риф"></a>
+				</div>
+				<div class="credits">
+					<p>сайт автора:<br><a href="#">siebrenversteeg.com</a><br><br>работа размещена:<br><a href="#">mccoyspace.com/project/125</a></p>
+					<div class="code">QmcQmBXT6ABVNFg94sM7TRQS9KZM6WDWGgJuXFfEiKhPsa</div>
+				</div>
+				<div class="hint">Предоставлено из коллекции Силлитуна</div>
+
+				<div class="text">
+					<p>«Квантум» — одно из первых в истории токенизированных произведений искусства, которое было создано задолго до всплеска интереса к NFT.</p>
+					<p>2 мая 2014 года художник Кевин Маккой совместно с программистом Анилом Дэшем выпустили этот токен на блокчейне Namecoin. Они использовали особую систему, которая позволяет цифровым художникам продавать, отслеживать и получать право собственности на свои работы без дополнительных ссылок или подтверждений авторства.</p>
+					<p>Как объясняет сам художник, работа «Квантум» была буквально создана из кода, являясь «автономным произведением искусства, вписанным в блокчейн». Впоследствии авторы воссоздали произведение на блокчейне Ethereum, чтобы выставить на аукционе Sotheby’s. Аукционный дом описал токен как прогрессивную работу, по праву сравнимую с «Авиньонскими девицами» Пикассо (1907) или «Черным квадратом» Казимира Малевича (1915). Каждая из них стала переломной для своего времени, положив начало крупным художественным движениям.</p>
+					<p>«Квантум» представляет собой непрерывный абстрактный цикл рождения и смерти. Это проект о творчестве и об основных принципах новой децентрализованной технологии. Сам «Квантум» расширяется и сжимается подобно самой сети блокчейн, занимающей то больше, то меньше места в мире, стремясь определить свое место в нем.</p>
+				</div>
+
+				<button class="close-btn">&lt; Вернуться</button>
 			</div>
 		</div>
 	</div>

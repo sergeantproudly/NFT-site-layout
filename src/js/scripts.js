@@ -161,7 +161,61 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 	resizeCallbacks.push(function () {
-		commentPos();
+		if ($comment.is(':visible')) {
+			commentPos();
+		}
+	});
+
+	// ФОРМА ОБРАТНОЙ СВЯЗИ
+	$('#feedback-form').submit(function(e) {
+		e.preventDefault();
+
+		if ($('#feedback-form textarea').val()) {
+			// отправка запроса на сервер
+
+			$('#feedback-form textarea').val('');
+			showModal('modal-done');
+		}
+	});
+
+	// LIGHTBOXES
+	var galleries = new Array();
+	$('.js-lightbox').each(function(i, a) {
+		if (!$(a).is('[data-gallery]')) {
+			$(a).magnificPopup({
+				type: 'image',
+				removalDelay: 300,
+				callbacks: {
+			        beforeOpen: function() {
+			            $(this.contentContainer).removeClass('fadeOut').addClass('animated fadeIn');
+			        },
+			        beforeClose: function() {
+			        	$(this.contentContainer).removeClass('fadeIn').addClass('fadeOut');
+			        }
+			    },
+				midClick: true
+			});
+		} else {
+			if (typeof(galleries[$(a).attr('data-gallery')]) == 'undefined') galleries.push($(a).attr('data-gallery'));
+		}
+	});
+	$.each(galleries, function(i, gallery) {
+		$('.js-lightbox[data-gallery="' + gallery + '"]').magnificPopup({
+			type: 'image',
+			removalDelay: 300,
+			callbacks: {
+		        beforeOpen: function() {
+		             $(this.contentContainer).removeClass('fadeOut').addClass('animated fadeIn');
+		        },
+		        beforeClose: function() {
+		        	$(this.contentContainer).removeClass('fadeIn').addClass('fadeOut');
+		        }
+		    },
+			gallery: {
+				enabled: true
+			},
+			midClick: true
+		});
 	});
 
 });

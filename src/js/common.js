@@ -21,7 +21,7 @@ function initElements(element) {
 	});
 
 	$('body').mouseup(function(e) {
-		if ($('#modal-fadeout').css('display') == 'block') {
+		if ($('#modal-fadeout').css('display') == 'block' && !$('body').hasClass('mfp-zoom-out-cur')) {
 			if (!$(e.target).closest('.contents').length) {
 				hideModal();
 			}
@@ -31,7 +31,7 @@ function initElements(element) {
 		if (!e)e = window.event;
 		var key = e.keyCode||e.which;
 
-		if ($('#modal-fadeout').css('display') == 'block') {			
+		if ($('#modal-fadeout').css('display') == 'block' && !$('body').hasClass('mfp-zoom-out-cur')) {			
 			if (key == 27) {
 				hideModal();
 			} 
@@ -93,7 +93,8 @@ function showModal(modal_id, dontHideOthers) {
 			$(this).hide().css('opacity', 1);
 		});
 
-	var display = __isMobileSmall ? 'block' : 'table';
+	//var display = __isMobileSmall ? 'block' : 'table';
+	var display = 'table';
 
 	$('#modal-fadeout').stop().fadeIn(300);
 	$modal.stop().fadeIn(450).css({
@@ -116,9 +117,9 @@ function showModal(modal_id, dontHideOthers) {
 		$('html').addClass('html-modal');
 	}
 
-	$modal.find('.js-scroll').each(function(index, block) {
-		scrollInit(block);
-	});
+	// $modal.find('.js-scroll').each(function(index, block) {
+	// 	scrollInit(block);
+	// });
 }
 
 function hideModal(sender, onlyModal) {
