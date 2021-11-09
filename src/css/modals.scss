@@ -29,15 +29,7 @@
 	& > .modal {
 		overflow: hidden;
 		line-height: 0;
-		display: table;
-		background-color: #fff;
-		height: 100%;
-		width: 100%;
-
-		@media (min-width: $adaptive-width-desktop) {
-			display: table-cell;
-			vertical-align: middle;
-		}
+		display: table-cell;
 	}
 }
 
@@ -75,7 +67,7 @@
 			right: 0;
 			box-sizing: content-box;
 			cursor: pointer;
-			background: url('../images/ico_close_modal.svg') no-repeat center;
+			background: url('../images/ico_modal_close.svg') no-repeat center;
 			background-size: contain;
 			width: 12px;
 			height: 12px;
@@ -106,7 +98,9 @@
 		}
 
 		#modal-login > & {
-
+			.modal-close {
+				
+			}
 		}
 	}
 }

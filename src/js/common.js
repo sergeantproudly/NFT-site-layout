@@ -21,8 +21,8 @@ function initElements(element) {
 	});
 
 	$('body').mouseup(function(e) {
-		if ($('#modal-fadeout').css('display') == 'block' && !$('html').hasClass('html-mobile-opened')) {
-			if (!$(e.target).closest('.contents').length && !$(e.target).closest('.ui-selectmenu-menu').length && !$(e.target).closest('.ui-datepicker').length) {
+		if ($('#modal-fadeout').css('display') == 'block') {
+			if (!$(e.target).closest('.contents').length) {
 				hideModal();
 			}
 		}
@@ -49,8 +49,6 @@ function initElements(element) {
 			$(textarea).data('autoheight-inited', true);
 		}
 	});
-
-	fadeoutInit();
 }
 
 var resizeCallbacks = [
@@ -61,8 +59,6 @@ function onResize() {
 	__isMobileTabletMiddle = ($(window).width() <= __widthMobileTabletMiddle);
 	__isMobileTabletSmall = ($(window).width() <= __widthMobileTabletSmall);
 	__isMobileSmall = ($(window).width() <= __widthMobileSmall);
-
-	fadeoutInit();
 
 	$.each(resizeCallbacks, function(i, func) {
 		func();

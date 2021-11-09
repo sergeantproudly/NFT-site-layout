@@ -392,6 +392,7 @@ header {
 	}
 
 	#introduction {
+		position: relative;
 		margin-bottom: 110px;
 
 		@media (min-width: $adaptive-width-tablet) {
@@ -420,6 +421,7 @@ header {
 
 			@media (min-width: $adaptive-width-desktop) {
 				font-size: 50px;
+				max-width: 1000px;
 				margin-bottom: 35px;
 			}
 
@@ -472,6 +474,7 @@ header {
 			@media (min-width: $adaptive-width-desktop) {
 				font-size: 20px;
 				line-height: 1.4;
+				max-width: 1000px;
 				margin-bottom: 96px;
 			}
 		}
@@ -519,7 +522,7 @@ header {
 
 			& > .text-holder {
 				position: relative;
-				overflow: hidden;
+				overflow-y: hidden;
 				max-height: 436px;
 
 				@media (min-width: $adaptive-width-desktop) {
@@ -557,6 +560,51 @@ header {
 
 				@media (min-width: $adaptive-width-desktop) {
 					width: 410px;
+				}
+			}
+		}
+
+		#comment-popup {
+			display: none;
+			position: fixed;
+			bottom: 15px;
+			right: 15px;
+			left: 15px;
+			z-index: 4;
+			font-family: $font-first;
+			font-size: 11px;
+			font-weight: 400;
+			text-transform: none;
+			line-height: 1.55;
+			color: #000;
+			background-color: #fff;
+			letter-spacing: 0.8px;
+			padding: 39px 15px 11px;
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+			@include radius(10px);
+
+			& > .close {
+				position: absolute;
+				top: 3px;
+				right: 3px;
+				padding: 12px;
+				box-sizing: content-box;
+				width: 12px;
+				height: 12px;
+				font-size: 0;
+				border: 0;
+				background: none;
+				cursor: pointer;
+				
+				&:after {
+					content: '';
+					position: absolute;
+					top: 12px;
+					left: 12px;
+					width: 12px;
+					height: 12px;
+					background: url('../images/ico_close.svg') no-repeat;
+					background-size: contain;
 				}
 			}
 		}
