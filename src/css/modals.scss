@@ -541,5 +541,77 @@
 				}
 			}
 		}
+
+		#modal-virtual > & {
+			padding: 48px 30px 31px;
+
+			@media (min-width: $adaptive-width-tablet) {
+				padding: 37px 41px 30px;
+			}
+
+			@media (min-width: $adaptive-width-desktop) {
+				padding: 66px 102px 40px;
+			}
+
+			.text {
+				font-size: 11px;
+				line-height: 1.55;
+				letter-spacing: 0.8px;
+				margin-bottom: 23px;
+
+				@media (min-width: $adaptive-width-tablet) {
+					font-size: 12px;
+					line-height: 1.33;
+					margin-bottom: 23px;
+				}
+
+				@media (min-width: $adaptive-width-desktop) {
+					font-size: 16px;
+					line-height: 1.56;
+					margin-bottom: 52px;
+				}
+
+				&.mobile {
+					display: block;
+
+					@media (min-width: $adaptive-width-desktop) {
+						display: none;
+					}
+				}
+
+				&.desktop {
+					display: none;
+
+					@media (min-width: $adaptive-width-desktop) {
+						display: block;
+					}
+				}
+			}
+
+			.btn {
+				display: block;
+				margin: 0 auto;
+				background-color: #000;
+				color: #fff;
+				width: 187px;
+				height: 47px;
+				border: 0;
+				font-size: 12px;
+				box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+
+				@media (min-width: $adaptive-width-tablet) {
+					width: 171px;
+					height: 37px;
+					font-size: 12px;
+				}
+
+				@media (min-width: $adaptive-width-desktop) {
+					width: 360px;
+					height: 68px;
+					font-size: 18px; 
+					font-weight: 600;
+				}
+			}
+		}
 	}
 }
