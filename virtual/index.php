@@ -22,7 +22,8 @@ file_put_contents($filename, $new_counter);
 $index = intdiv($counter, $room_size);
 
 
-echo $links[$index];
+//echo $links[$index];
+echo $links[0];
 return true;
 
 ?>
