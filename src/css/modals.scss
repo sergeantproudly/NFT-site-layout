@@ -411,19 +411,7 @@
 					-webkit-hyphens: none;
 					-ms-hyphens: none;
 					hyphens: none;
-					padding-bottom: 28px;
-					border-bottom: 1px solid #A7A7A7;
-					margin-bottom: 13px;
-
-					@media (min-width: $adaptive-width-tablet) {
-						padding-bottom: 20px;
-						margin-bottom: 9px;
-					}
-
-					@media (min-width: $adaptive-width-desktop) {
-						padding-bottom: 28px;
-						margin-bottom: 23px;
-					}
+					margin: 0;
 				}
 
 				.code {
@@ -434,6 +422,20 @@
 					-ms-hyphens: none;
 					hyphens: none;
 					color: #999;
+
+					padding-top: 28px;
+					border-top: 1px solid #A7A7A7;
+					margin-top: 13px;
+
+					@media (min-width: $adaptive-width-tablet) {
+						padding-top: 20px;
+						margin-top: 9px;
+					}
+
+					@media (min-width: $adaptive-width-desktop) {
+						padding-top: 28px;
+						margin-top: 23px;
+					}
 				}
 			}
 
