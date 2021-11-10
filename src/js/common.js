@@ -102,31 +102,32 @@ function showModal(modal_id, dontHideOthers) {
 		});
 
 	//var display = __isMobileSmall ? 'block' : 'table';
-	var display = 'table';
+	//var display = 'table';
+	var display = 'block';
 
 	// header bug fix
 	fixSelfHeight($('header'));
 
 	$('#modal-fadeout').stop().fadeIn(300);
-	$modal.stop().fadeIn(450).css({
-		'display': display,
-		'top': $(window).scrollTop()
-	});
+	$modal.stop().fadeIn(450);
 
-    var oversize = $(window).height() < $modal.find('.contents').outerHeight(true);
+    //var oversize = $(window).height() < $modal.find('.contents').outerHeight(true);
+    var modal_h = $modal.find('.contents').outerHeight(true);
 
-	if ($modal.attr('data-long') || oversize) {
-		$('html').addClass('html-modal-long');
+    $('html').addClass('html-modal');
 
-		// if (oversize && __isMobile) {
-		// 	var modalHeight = $modal.outerHeight() - parseInt($('#layout').css('padding-top'));
-		// 	$('#layout').data('scrollTop', $(window).scrollTop()).addClass('js-modal-overflow').height(modalHeight);
-		// 	$modal.css('top', 0);
-		// 	$('html,body').scrollTop(0);
-		// }
-	} else {
-		$('html').addClass('html-modal');
-	}
+	// if ($modal.attr('data-long') || oversize) {
+	// 	$('html').addClass('html-modal-long');
+
+	// 	// if (oversize && __isMobile) {
+	// 	// 	var modalHeight = $modal.outerHeight() - parseInt($('#layout').css('padding-top'));
+	// 	// 	$('#layout').data('scrollTop', $(window).scrollTop()).addClass('js-modal-overflow').height(modalHeight);
+	// 	// 	$modal.css('top', 0);
+	// 	// 	$('html,body').scrollTop(0);
+	// 	// }
+	// } else {
+	// 	$('html').addClass('html-modal');
+	// }
 
 	// $modal.find('.js-scroll').each(function(index, block) {
 	// 	scrollInit(block);
@@ -143,7 +144,11 @@ function hideModal(sender, onlyModal) {
 		// 	$('html,body').scrollTop(savedScrollTop);
 		// }
 		$modal.stop().fadeOut(450, function() {
-			$('html').removeClass('html-modal html-modal-long');
+			$('html').removeClass('html-modal');
+			// $('html').css({
+		 //    	overflow: 'visible ',
+		 //    	height: 'auto'
+		 //    });
 
 			// header bug fix
 			unfixSelfHeight($('header'));
