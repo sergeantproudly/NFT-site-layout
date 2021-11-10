@@ -173,7 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		if ($('#feedback-form textarea').val()) {
 			$.ajax({
 				type: 'POST',
-				url: '/virtual/',
+				url: '/feedback/',
+				data: {text: $('#feedback-form textarea').val()},
 				success: function(response) {
 					if (response == 'OK') {
 						console.log('OK');
