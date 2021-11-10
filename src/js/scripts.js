@@ -229,19 +229,18 @@ document.addEventListener('DOMContentLoaded', function() {
 			success: function(response) {
 				if (response) {
 					var link = response;
-					console.log(link);
-					//redirect(link);
+					redirect(link);
 
 				} else {
 					var link = def_link;
 					console.log('success but empty');
-					//redirect(link);
+					redirect(link);
 				}
 			},
 			error: function() {
 				var link = def_link;
 				console.log('error');
-				//redirect(link);
+				redirect(link);
 			}
 		}); 
 	});
