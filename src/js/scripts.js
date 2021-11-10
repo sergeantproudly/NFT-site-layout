@@ -177,14 +177,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				data: {text: $('#feedback-form textarea').val()},
 				success: function(response) {
 					if (response == 'OK') {
-						console.log('OK');
+						//console.log('OK');
 
 					} else {
-						console.log('SUCCESS BUT NOT OK');
+						//console.log('SUCCESS BUT NOT OK');
 					}
 				},
 				error: function() {
-					console.log('FAIL');
+					//console.log('FAIL');
 				}
 			}); 
 
