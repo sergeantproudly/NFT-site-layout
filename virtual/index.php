@@ -10,10 +10,16 @@ $links = [
 	'https://app.spatial.io/rooms/618acbb72ac8bc00018a69bf?share=4524573504096320809',
 	'https://app.spatial.io/rooms/618acc367c55ed00014416d7?share=8490043065755065278'
 ];
+$room_size = 20;
 
 $counter = (int) file_get_contents($filename);
-file_put_contents($filename, $counter + 1);
-$index = intdiv($counter, 20);
+$new_counter = $counter + 1;
+if ($new_counter > count($links) * $room_size) {
+	$new_counter = 1;
+}
+file_put_contents($filename, $new_counter);
+
+$index = intdiv($counter, $room_size);
 
 
 echo $links[$index];
