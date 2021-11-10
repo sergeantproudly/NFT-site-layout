@@ -171,7 +171,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		e.preventDefault();
 
 		if ($('#feedback-form textarea').val()) {
-			// отправка запроса на сервер
+			$.ajax({
+				type: 'POST',
+				url: '/virtual/',
+				success: function(response) {
+					if (response == 'OK') {
+						console.log('OK');
+
+					} else {
+						console.log('SUCCESS BUT NOT OK');
+					}
+				},
+				error: function() {
+					console.log('FAIL');
+				}
+			}); 
 
 			$('#feedback-form textarea').val('');
 			showModal('modal-done');
