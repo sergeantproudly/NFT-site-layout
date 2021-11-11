@@ -2,3 +2,5 @@ node_modules/
 download/
 .htaccess
 robots.txt
+feedback/mails
+virtual/counter
