@@ -13,35 +13,35 @@
 }
 
 .modal-wrapper {
-	/*position: absolute;*/
+	position: fixed;
 	top: 0;
 	left: 0;
-	/*display: table;*/
-	display: block;
 	width: 100%;
 	height: 100%;
 	z-index: 110;
+	display: flex;
 	display: none;
-	position: fixed;
-	top: 0;
 	overflow-y: scroll;
+	align-items: flex-end;
 
 	& > .modal {
 		overflow: hidden;
 		line-height: 0;
 		/*display: table-cell;*/
 		display: block;
+		width: 100%;
+		flex-basis: 100%;
 		vertical-align: bottom;
-		padding-top: 5%;
+		padding-top: 44px;
 
 		@media (min-width: $adaptive-width-tablet) {
 			vertical-align: middle;
-			padding: 5% 10%;
+			padding: 27px 10%;
 		}
 
 		@media (min-width: $adaptive-width-desktop) {
 			vertical-align: middle;
-			padding: 5% 17.91%;
+			padding: 125px 17.91%;
 		}
 	}
 }
@@ -495,6 +495,7 @@
 				box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
 				cursor: pointer;
 				@include radius(100px);
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
 				@media (min-width: $adaptive-width-tablet) {
 					font-size: 12px;

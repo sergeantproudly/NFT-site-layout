@@ -54,11 +54,13 @@ function initElements(element) {
 var resizeCallbacks = [
 ];
 function onResize() {
-	__isMobile = ($(window).width() <= __widthMobile);
-	__isMobileTablet = ($(window).width() <= __widthMobileTablet);
-	__isMobileTabletMiddle = ($(window).width() <= __widthMobileTabletMiddle);
-	__isMobileTabletSmall = ($(window).width() <= __widthMobileTabletSmall);
-	__isMobileSmall = ($(window).width() <= __widthMobileSmall);
+	__isMobile = ($(window).width() < __widthMobile);
+	__isMobileDesktop = ($(window).width() < __widthMobileDesktop);
+	__isMobileDesktopSmall = ($(window).width() < __widthMobileDesktopSmall);
+	__isMobileTablet = ($(window).width() < __widthMobileTablet);
+	__isMobileTabletMiddle = ($(window).width() < __widthMobileTabletMiddle);
+	__isMobileTabletSmall = ($(window).width() < __widthMobileTabletSmall);
+	__isMobileSmall = ($(window).width() < __widthMobileSmall);
 
 	$.each(resizeCallbacks, function(i, func) {
 		func();
@@ -103,15 +105,21 @@ function showModal(modal_id, dontHideOthers) {
 
 	//var display = __isMobileSmall ? 'block' : 'table';
 	//var display = 'table';
-	var display = 'block';
+	//var display = 'block';
+	//var display = __isMobileSmall ? 'flex' : 'block';
 
 	// header bug fix
 	fixSelfHeight($('header'));
 
 	$('#modal-fadeout').stop().fadeIn(300);
-	$modal.stop().fadeIn(450);
+	// if (display === 'flex') $modal.stop().css('display', 'flex').hide().fadeIn(450);
+	// else $modal.stop().fadeIn(450);
+	 $modal.stop().fadeIn(450);
 
-    //var oversize = $(window).height() < $modal.find('.contents').outerHeight(true);
+    var oversize = $(window).height() < $modal.find('.contents').outerHeight(true);
+    if (__isMobileSmall && !oversize) $modal.css({
+    	display: 'flex'
+    });
     var modal_h = $modal.find('.contents').outerHeight(true);
 
     $('html').addClass('html-modal');
