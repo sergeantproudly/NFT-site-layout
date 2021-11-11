@@ -30,8 +30,8 @@ if ($text) {
 
         //Recipients
         $mail->setFrom('contact@celestialhermitage.ru');
-        $mail->addAddress('info@proudly.ru');
-        //$mail->addAddress('contact@celestialhermitage.ru');
+        //$mail->addAddress('info@proudly.ru');
+        $mail->addAddress('contact@celestialhermitage.ru');
 
         //Content
         $mail->isHTML(true);
