@@ -234,28 +234,30 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	// ПЕРЕХОД В ВИРТУАЛЬНУЮ ГАЛЕРЕЮ
-	$('#modal-virtual .js-continue').click(function(e) {
-		e.preventDefault();
-
-		var def_link = 'https://app.spatial.io/rooms/618af4f941b26f00013f8c37?share=3165115283768468933';
+	function modalVirtualPrepareLink(link) {
+		var $btn = $('#modal-virtual .js-continue');
+		$btn.attr('href', link);
+	}
+	$('#virtual-gallery .js-modal-link').click(function() {
+		var def_link = 'https://app.spatial.io/rooms/618b7ee52ac8bc00018a7292?share=7014787188496507048';
 		$.ajax({
 			type: 'POST',
 			url: '/virtual/',
 			success: function(response) {
 				if (response) {
 					var link = response;
-					redirect(link);
+					modalVirtualPrepareLink(link);
 
 				} else {
 					var link = def_link;
 					console.log('success but empty');
-					redirect(link);
+					modalVirtualPrepareLink(link);
 				}
 			},
 			error: function() {
 				var link = def_link;
 				console.log('error');
-				redirect(link);
+				modalVirtualPrepareLink(link);
 			}
 		}); 
 	});
