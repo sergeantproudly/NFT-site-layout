@@ -29,7 +29,8 @@ if ($text) {
 
         //Recipients
         $mail->setFrom('contact@celestialhermitage.ru');
-        $mail->addAddress('info@proudly.ru');     //Add a recipient
+        //$mail->addAddress('info@proudly.ru');     //Add a recipient
+        $mail->addAddress('contact@celestialhermitage.ru');
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
