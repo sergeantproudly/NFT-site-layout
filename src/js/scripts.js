@@ -19,14 +19,46 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	// ОТКРЫТИЕ ОТВЕТА ПО КЛИКУ НА ВОПРОС ИЛИ ИКОНКУ В СЕКЦИИ ВОПРОСОВ-ОТВЕТОВ
+	var answer_padding = 0;
+	function faqRemPaddings() {
+		if (__isMobileSmall) answer_padding = 16;
+		else if (__isMobileTablet) answer_padding = 28;
+		else answer_padding = 46;
+	}
+	resizeCallbacks.push(function () {
+		faqRemPaddings();
+
+		$('#faq ul>li.opened').css({
+			'padding-bottom': answer_padding + 'px'
+		});
+	});
+	faqRemPaddings();
+
 	$('#faq ul>li').children('h3, .h3, .toggler').click(function(e) {
 		e.stopPropagation();
 
 		var $li = $(this).closest('li');
+		var $answer = $(this).siblings('.answer');
 		if (!$li.hasClass('opened')) {
+			$answer.css({
+				'height': 0,
+				'padding-bottom': 0
+			}).show();
 			$li.addClass('opened');
+			var h = $answer.height('auto').outerHeight();
+			$answer.height(0).stop().animate({
+				'height': h,
+				'padding-bottom': answer_padding + 'px'
+			}, __animationSpeed);
+
 		} else {
-			$li.removeClass('opened');
+			$answer.stop().animate({
+				'height': 0,
+				'padding-bottom': 0
+			}, __animationSpeed, function() {
+				$(this).hide();
+				$li.removeClass('opened');
+			});
 		}
 	});
 
@@ -261,5 +293,22 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}); 
 	});
+
+	// ПАРАЛЛАКС БЛОКОВ
+	function parallaxScroll() {
+		$('.js-parallax').each(function(i, block) {
+			var coef = $(block).attr('data-parallax-coef');
+			var r = block.getBoundingClientRect();
+			var parallaxYCenter = r.y + r.height / 2;
+			var scrollYCenter = window.innerHeight / 2;
+			var delta = (parallaxYCenter + window.innerHeight - $(block).outerWidth()) * coef - 100;
+			$(block).css({'transform': 'translateY(' + delta + 'px)'});
+		});
+	}
+	$(window).on('scroll', parallaxScroll);
+	resizeCallbacks.push(function () {
+		parallaxScroll();
+	});
+	parallaxScroll();
 
 });

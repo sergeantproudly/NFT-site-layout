@@ -792,6 +792,7 @@ header {
 					padding: 11px 61px 11px 15px;
 					cursor: pointer;
 					-webkit-tap-highlight-color: transparent;
+					@include transition(padding-bottom);
 
 					@media (min-width: $adaptive-width-tablet) {
 						padding: 30px 100px 30px 33px;
@@ -808,16 +809,17 @@ header {
 					height: 0;
 					font-size: 12px;
 					line-height: 1.58;
-					padding: 2px 15px 16px;
+					padding: 0 15px;
+					box-sizing: content-box;
 
 					@media (min-width: $adaptive-width-tablet) {
-						padding: 3px 33px 28px;
+						padding: 0 33px;
 					}
 
 					@media (min-width: $adaptive-width-desktop) {
 						font-size: 16px;
 						line-height: 1.56;
-						padding: 8px 39px 46px;
+						padding: 0 39px;
 					}
 
 					p {
@@ -860,9 +862,33 @@ header {
 				}
 
 				&.opened {
+					h3,
+					.h3 {
+						padding-bottom: 13px;
+						@include transition(padding-bottom);
+
+						@media (min-width: $adaptive-width-tablet) {
+							padding-bottom: 33px;
+						}
+
+						@media (min-width: $adaptive-width-desktop) {
+							padding-bottom: 40px;
+						}
+					}
+
 					.answer {
 						display: block;
 						height: auto;
+						/* paddings in js */
+						padding-bottom: 16px;
+
+						@media (min-width: $adaptive-width-tablet) {
+							padding-bottom: 28px;
+						}
+
+						@media (min-width: $adaptive-width-desktop) {
+							padding-bottom: 46px;
+						}
 					}
 
 					.toggler {
