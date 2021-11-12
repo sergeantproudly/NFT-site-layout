@@ -384,6 +384,18 @@
 						width: 100%;
 						height: 100%;
 					}
+
+					& + .video {
+						margin-top: 18px;
+
+						@media (min-width: $adaptive-width-tablet) {
+							margin-top: 16px;
+						}
+
+						@media (min-width: $adaptive-width-desktop) {
+							margin-top: 30px;
+						}
+					}
 				}
 			}
 
