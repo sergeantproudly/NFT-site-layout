@@ -298,10 +298,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	function parallaxScroll() {
 		$('.js-parallax').each(function(i, block) {
 			var coef = $(block).attr('data-parallax-coef');
+			var offset = 0;
+			if (__isMobileSmall && $(block).attr('data-parallax-offset-mobile')) {
+				offset = parseInt($(block).attr('data-parallax-offset-mobile'));
+			} else if (__isMobileTablet && $(block).attr('data-parallax-offset-tablet')) {
+				offset = parseInt($(block).attr('data-parallax-offset-tablet'));
+			} else if ($(block).attr('data-parallax-offset-desktop')) {
+				offset = parseInt($(block).attr('data-parallax-offset-desktop'));
+			}
 			var r = block.getBoundingClientRect();
 			var parallaxYCenter = r.y + r.height / 2;
 			var scrollYCenter = window.innerHeight / 2;
-			var delta = (parallaxYCenter + window.innerHeight - $(block).outerWidth()) * coef - 100;
+			var delta = (parallaxYCenter - scrollYCenter) * coef;
 			$(block).css({'transform': 'translateY(' + delta + 'px)'});
 		});
 	}
