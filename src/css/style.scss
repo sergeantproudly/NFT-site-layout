@@ -193,6 +193,18 @@ header {
 				}
 			}
 		}
+
+		&.en {
+			@media (max-width: 395px) {
+				& > .wrap {
+					& > span {
+						display: block;
+						text-align: center;
+						position: static;
+					}
+				}
+			}
+		}
 	}
 }
 
