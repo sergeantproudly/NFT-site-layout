@@ -232,14 +232,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			$(a).magnificPopup({
 				type: 'image',
 				removalDelay: 300,
-				callbacks: {
-			        beforeOpen: function() {
-			            $(this.contentContainer).removeClass('fadeOut').addClass('animated fadeIn');
-			        },
-			        beforeClose: function() {
-			        	$(this.contentContainer).removeClass('fadeIn').addClass('fadeOut');
-			        }
-			    },
+  				mainClass: 'mfp-fade',
+				// callbacks: {
+			 //        beforeOpen: function() {
+			 //            $(this.contentContainer).removeClass('fadeOut').addClass('animated fadeIn');
+			 //        },
+			 //        beforeClose: function() {
+			 //        	$(this.contentContainer).removeClass('fadeIn').addClass('fadeOut');
+			 //        }
+			 //    },
 				midClick: true
 			});
 		} else {
