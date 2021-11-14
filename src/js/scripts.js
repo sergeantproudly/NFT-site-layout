@@ -2,6 +2,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	initElements();
 
+	// ПЕРЕХОД НА ЯЗЫКОВУЮ ВЕРСИЮ
+	$('#lang-link').click(function(e) {
+		e.preventDefault();
+
+		var lang = $(this).attr('data-lang');
+		$.removeCookie('lang');
+		$.cookie('lang', lang, { expires: 30, path: '/' });
+
+		redirect($(this).attr('href'));
+		//reload();
+	});
+
 	// ОТКРЫТИЕ ВСТУПИТЕЛЬНОГО ТЕКСТА ПО КНОПКЕ ЧИТАТЬ ДАЛЬШЕ
 	$('#introduction .btn-line>.btn').click(function(e) {
 		e.preventDefault();
