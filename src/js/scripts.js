@@ -309,11 +309,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			} else if ($(block).attr('data-parallax-offset-desktop')) {
 				offset = parseInt($(block).attr('data-parallax-offset-desktop'));
 			}
+			if (offset !== 0 && $(block).attr('data-parallax-offset-unit')) {
+				var unit = $(block).attr('data-parallax-offset-unit');
+				if (unit === 'vw') offset = window.innerWidth / offset;
+				else if (unit === 'vh') offset = window.innerHeight / offset;
+			}
 			var r = block.getBoundingClientRect();
 			var parallaxYCenter = r.y + r.height / 2;
 			var scrollYCenter = window.innerHeight / 2;
 			var delta = (parallaxYCenter - scrollYCenter) * coef;
-			$(block).css({'transform': 'translateY(' + delta + 'px)'});
+			$(block).css({'transform': 'translateY(' + (delta + offset) + 'px)'});
 		});
 	}
 	$(window).on('scroll', parallaxScroll);

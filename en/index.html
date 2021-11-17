@@ -34,7 +34,7 @@
     <meta name="twitter:title" content="Welcome to the Celestial Hermitage" />
     <meta name="twitter:image" content="https://celestialhermitage.ru/assets/images/og_preview_en.png" />
 
-    <link rel="stylesheet" href="/assets/css/style.css?15"/>
+    <link rel="stylesheet" href="/assets/css/style.css?17"/>
 </head>
 
 <body>
@@ -310,8 +310,24 @@
 
 	<div id="virtual-gallery">
 		<div class="holder">
-			<a href="#modal-virtual" class="js-modal-link hole-link">Go <br>to the virtual <br>gallery</a>
+			<svg style="position: absolute;top:0;left:0;width:100%;height:100%;" fill="none" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<clipPath id="clipping-mobile" clipPathUnits="objectBoundingBox">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1 1V0L0 0 0 1H1ZM.3138.3052C.2872.3052.2656.3304.2656.3615C.2656.3926.244.4178.2174.4178H.1581C.1274.4178.1026.4469.1026.4827V.488C.1026.5238.1274.5529.1581.5529H.2245C.2472.5529.2656.5744.2656.6009C.2656.6274.284.6489.3067.6489H.6899C.7125.6489.7309.6274.7309.6009C.7309.5744.7493.5529.772.5529H.8384C.8691.5529.894.5238.894.488V.4827C.894.4469.8691.4178.8384.4178H.7791C.7525.4178.7309.3926.7309.3615C.7309.3304.7094.3052.6828.3052H.3138Z"></path>
+					</clipPath>
+					<clipPath id="clipping-tablet" clipPathUnits="objectBoundingBox">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1 .9983V0L0-0-0 .9983 1 .9983ZM.3675.2926C.3525.2926.3403.3165.3403.3461V.3678C.3403.3973.3282.4213.3131.4213H.2568C.2418.4213.2296.4452.2296.4748V.5222C.2296.5518.2418.5757.2568.5757H.3131C.3282.5757.3403.5996.3403.6292V.632C.3403.6615.3525.6854.3675.6854H.629C.644.6854.6562.6615.6562.632V.6292C.6562.5996.6684.5757.6834.5757H.7397C.7547.5757.7669.5518.7669.5222V.4748C.7669.4452.7547.4213.7397.4213H.6834C.6684.4213.6562.3973.6562.3678V.3461C.6562.3165.644.2926.629.2926H.3675Z" fill="white"/>
+					</clipPath>
+					<clipPath id="clipping-desktop" clipPathUnits="objectBoundingBox">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1 .9983V0L0-0-0 .9983 1 .9983ZM.3675.2926C.3525.2926.3403.3165.3403.3461V.3678C.3403.3973.3282.4213.3131.4213H.2568C.2418.4213.2296.4452.2296.4748V.5222C.2296.5518.2418.5757.2568.5757H.3131C.3282.5757.3403.5996.3403.6292V.632C.3403.6615.3525.6854.3675.6854H.629C.644.6854.6562.6615.6562.632V.6292C.6562.5996.6684.5757.6834.5757H.7397C.7547.5757.7669.5518.7669.5222V.4748C.7669.4452.7547.4213.7397.4213H.6834C.6684.4213.6562.3973.6562.3678V.3461C.6562.3165.644.2926.629.2926H.3675Z" fill="white"/>
+					</clipPath>
+				</defs>
+			</svg>
+			<div class="bg-holder">
+				<div class="bg js-parallax" data-parallax-coef="0.2"></div>
+			</div>
 		</div>
+		<a href="#modal-virtual" class="js-modal-link hole-link"><span class="js-parallax" data-parallax-coef="0.1">Go <br>to the virtual <br>gallery</span></a>
 	</div>
 
 	<div class="body">
@@ -390,6 +406,8 @@
 						<input type="submit" name="_submit" value="Send" class="btn">					
 					</form>
 				</div>
+
+				<div class="bg js-parallax" data-parallax-coef="0.2"></div>
 			</div>
 		</section>
 
@@ -1650,7 +1668,7 @@
 		</div>
 	</div>
 
-	<script src="/assets/js/scripts.js?15"></script>
+	<script src="/assets/js/scripts.js?17"></script>
 	<script src="/app.js?1"></script>
 	<script src="https://player.vimeo.com/api/player.js"></script>
 </body>
