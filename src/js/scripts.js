@@ -320,6 +320,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	resizeCallbacks.push(function () {
 		parallaxScroll();
 	});
-	parallaxScroll();
+	setTimeout(function() {
+		parallaxScroll();
+	}, 200);
 
 });
