@@ -18,6 +18,7 @@ const assetsVersion = 1;
 const jsFiles = [
 	'./src/js/jquery-3.1.1.min.js',
 	'./src/js/jquery.cookie.js',
+	'./src/js/jquery.touchSwipe.min.js',
 	'./src/js/jquery.magnific-popup.js',
 	'./src/js/settings.js',
 	'./src/js/common.js',

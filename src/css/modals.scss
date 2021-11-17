@@ -90,19 +90,23 @@
 		}
 
 		.modal-close {
-			display: none;
+			display: block;
 			position: absolute;
 			top: 0;
 			right: 0;
 			box-sizing: content-box;
 			cursor: pointer;
-			width: 12px;
+			width: 100%;
 			height: 12px;
 			padding: 15px;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
 			@media (min-width: $adaptive-width-tablet) {
-				display: block;
+				top: 0;
+				right: 0;
+				width: 12px;
+				height: 12px;
+				padding: 15px;
 			}
 
 			@media (min-width: $adaptive-width-desktop) {
@@ -120,6 +124,11 @@
 				height: 12px;
 				background: url('../images/ico_modal_close.svg') no-repeat center;
 				background-size: contain;
+				display: none;
+
+				@media (min-width: $adaptive-width-tablet) {
+					display: block;
+				}
 
 				@media (min-width: $adaptive-width-desktop) {
 					width: 23px;
@@ -144,8 +153,8 @@
 			}
 
 			.modal-close {				
-				font-size: 0;				
-				padding: 0;
+				font-size: 0;
+				padding: 15px 0;
 
 				@media (min-width: $adaptive-width-tablet) {
 					padding: 15px;
@@ -168,7 +177,7 @@
 
 				&:after {
 				    content: '';
-				    display: block;
+				    display: none;
 				    width: 18px;
 				    height: 18px;
 				    background: url('../images/ico_modal_close.svg') no-repeat;
@@ -179,6 +188,7 @@
 				    transform: translate(-50%, -50%);
 
 				    @media (min-width: $adaptive-width-tablet) {
+				    	display: block;
 				    	width: 12px;
 				    	height: 12px;
 				    }

@@ -17,7 +17,9 @@ function initElements(element) {
 			hideModal(this, false);
 		}
 		*/
-		hideModal(this, false);
+		if (!$(this).hasClass('modal-close') || !__isMobileSmall) {
+			hideModal(this, false);
+		}
 	});
 
 	$('body').mouseup(function(e) {

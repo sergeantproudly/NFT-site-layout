@@ -133,34 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 
 		} else { // десктопный вариант
-			if ($(window).width() - $dfn.offset().left - $dfn.innerWidth() > popup_size + padd_size * 2) { // умещается справа
-				$comment.css({
-					position: 'absolute',
-					top: (dfn_coords.top + $dfn.innerHeight() / 2) + 'px',
-					bottom: 'auto',
-					right: 'auto',
-					left: (dfn_coords.left + $dfn.innerWidth() + padd_size) + 'px',
-					width: popup_size + 'px'
-				});
-			} else if ($dfn.offset().left > popup_size + padd_size * 2) { // умещается слева
-				$comment.css({
-					position: 'absolute',
-					top: (dfn_coords.top + $dfn.innerHeight() / 2) + 'px',
-					bottom: 'auto',
-					right: 'auto',
-					left: (dfn_coords.left - padd_size - popup_size) + 'px',
-					width: popup_size + 'px'
-				});
-			} else {
-				$comment.css({
-					position: 'fixed',
-					top: 'auto',
-					bottom: padd_size + 'px',
-					right: padd_size + 'px',
-					left: padd_size + 'px',
-					width: 'auto'
-				});
-			}
+			$comment.css({
+				position: 'absolute',
+				top: (dfn_coords.top + $dfn.innerHeight() / 2) + 'px',
+				bottom: 'auto',
+				right: '-50px',
+				left: 'auto',
+				width: popup_size + 'px'
+			});
 		}
 	}
 	function commentOpen(dfn) {
@@ -276,6 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			},
 			midClick: true
 		});
+	});
+
+	// ЗАКРЫТИЕ ПОПАПОВ СВАЙПОМ
+	$('.modal-wrapper>.modal>.contents>.modal-close').swipe({
+		swipeDown: function(event, direction, distance) {
+			if (__isMobileSmall) {
+				hideModal();
+			}
+		},
+		threshold: 50
 	});
 
 	// ПЕРЕХОД В ВИРТУАЛЬНУЮ ГАЛЕРЕЮ
