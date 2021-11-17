@@ -1752,6 +1752,10 @@ header {
 		letter-spacing: 0.8px;
 		text-transform: uppercase;
 
+		@media (min-width: $adaptive-width-tablet) {
+			margin-top: 0;
+		}
+
 		@media (min-width: $adaptive-width-desktop) {
 			font-size: 30px;
 		}
