@@ -92,13 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
 			top: $dfn.offset().top - $holder.offset().top,
 			left: $dfn.offset().left - $holder.offset().left
 		};
+		$comment.removeClass('mobile-like');
 		if (__isMobileTabletSmall) { // мобильный вариант
 			$comment.css({
 				position: 'fixed',
 				top: 'auto',
-				bottom: padd_size + 'px',
-				right: padd_size + 'px',
-				left: padd_size + 'px',
+				bottom: '0px',
+				right: '0px',
+				left: '0px',
 				width: 'auto'
 			});
 
@@ -125,11 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				$comment.css({
 					position: 'fixed',
 					top: 'auto',
-					bottom: padd_size + 'px',
-					right: padd_size + 'px',
-					left: padd_size + 'px',
+					bottom: '0px',
+					right: '0px',
+					left: '0px',
 					width: 'auto'
-				});
+				}).addClass('mobile-like');
 			}
 
 		} else { // десктопный вариант
@@ -187,6 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	resizeCallbacks.push(function () {
 		if ($comment.is(':visible')) {
 			commentPos();
+		}
+	});
+	$(window).on('scroll', function() {
+		if ($comment.is(':visible')) {
+			setTimeout(commentClose, 250);
 		}
 	});
 
@@ -265,7 +271,19 @@ document.addEventListener('DOMContentLoaded', function() {
 				hideModal();
 			}
 		},
-		threshold: 50
+		threshold: 100
+	});
+	$('.modal-wrapper>.modal>.contents').swipe({
+		swipeDown: function(event, direction, distance) {
+			console.log(event);
+			if ($(this).closest('.modal-wrapper').scrollTop() <= 0) {
+				hideModal();
+			} else {
+			}
+		},
+		threshold: 100,
+		//preventDefaultEvents: false,
+		allowPageScroll: 'vertical'
 	});
 
 	// ПЕРЕХОД В ВИРТУАЛЬНУЮ ГАЛЕРЕЮ
@@ -301,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function parallaxScroll() {
 		$('.js-parallax').each(function(i, block) {
 			var coef = $(block).attr('data-parallax-coef');
+			if (__isMobileSmall && $(block).attr('data-parallax-coef-mobile')) coef = $(block).attr('data-parallax-coef-mobile');
 			var offset = 0;
 			if (__isMobileSmall && $(block).attr('data-parallax-offset-mobile')) {
 				offset = parseInt($(block).attr('data-parallax-offset-mobile'));

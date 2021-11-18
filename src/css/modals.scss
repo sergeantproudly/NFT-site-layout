@@ -41,7 +41,7 @@
 
 		@media (min-width: $adaptive-width-desktop) {
 			vertical-align: middle;
-			padding: 125px 17.91%;
+			padding: 40px 17.91%;
 		}
 	}
 }
@@ -68,7 +68,7 @@
 			background-color: #fff;
 			max-width: 923px;
 			margin: auto;
-			@include radius(10px);
+			@include radius(20px);
 			padding: 66px 102px 40px;
 		}
 
